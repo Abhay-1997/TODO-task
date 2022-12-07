@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block containt%}
+
+
+<div class="display-6 fw-bold text-primary">All Task List</div>
+
+<a class="btn btn-dark" style="margin-left: 10px;" href="{% url 'add' %}">Add More Task</a>
+<a class="btn btn-dark" style="margin-left: 800px;" href="{% url 'index' %}">Home</a>
+
+
+<br>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <div class="row">
+                <th scope="col" class="col-lg-1">Task Id</th>
+                <th scope="col" class="col-lg-6">Task</th>
+                <th scope="col" class="col-lg-2">Status</th>
+            </div>
+
+        </tr>
+    </thead>
+    <tbody>
+        {%for obj in objs %}
+        <tr>
+            <th scope="row">{{obj.id}}</th>
+            <td>{{obj.task}}</td>
+            {% if obj.status == "Completed" %}
+            <td class="text-success">{{obj.status}}</td>
+            {% else %}
+            <td class="text-warning">{{obj.status}}</td>
+
+            {% endif %}
+            <td><a class="btn btn-light" href="{%url 'update' obj.id %}">update</a></td>
+            <td><a class="btn btn-outline-danger" href="{%url 'delete' obj.id %}">delete</a></td>
+        </tr>
+        {%endfor%}
+
+    </tbody>
+</table>
+</div>
+{%endblock%}
+</body>
+
+</html>

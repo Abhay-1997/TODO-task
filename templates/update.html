@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block containt%}
+
+
+<div class="display-6 fw-bold">Update Status</div>
+<a class="btn btn-dark" style="margin-left: 800px;" href="{% url 'index' %}">Home</a>
+
+<hr>
+<br>
+<form action="{%url 'update' obj.id %}" method="post">
+    {% csrf_token %}
+    <div class="row ">
+        <div class="col-lg-2">
+            <label class="form-label fw-bold" for="task">Task details: </label>
+        </div>
+        <div class="col-lg-8">
+            <textarea class="form-control" id="task" name="task" rows="7" placeholder="{{obj.task}}"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="container col-lg-10 row">
+            <div class="form-check col-lg-3 m-2">
+                {% if obj.status == "Pending" %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="Pending" value="Pending" checked>
+                    <label class="form-check-label" for="Pending">
+                        Pending
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="Completed" value="Completed">
+                    <label class="form-check-label" for="Completed">
+                        Completed
+                    </label>
+                </div>
+                {% else %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="Pending" value="Pending">
+                    <label class="form-check-label" for="Pending">
+                        Pending
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="Completed" value="Completed" checked>
+                    <label class="form-check-label" for="Completed">Completed
+                    </label>
+                </div>
+
+                {% endif %}
+            </div>
+
+            <div class="col-lg-10">
+
+                <a style="margin-right: 350px;" type="submit" href="{%url 'delete' obj.id %}"
+                    class="btn btn-danger">Delete Task</a>
+
+                <button class="btn btn-outline-secondary " type="submit">Save Task Status</button>
+
+            </div>
+        </div>
+</form>
+{%endblock%}

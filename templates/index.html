@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block containt%}
+
+
+        <hr>
+        <div class="row ">
+            <a class="btn btn-lg btn-outline-secondary col-lg-3" href="{%url 'add'%}">Add Task</a>
+            <a class="btn btn-lg btn-outline-primary col-lg-3" href="{%url 'all'%}">List of All Task</a>
+            <a class="btn btn-lg btn-outline-success col-lg-3" href="{%url 'complete'%}">Complete Task</a>
+            <a class="btn btn-lg btn-outline-warning col-lg-3" href="{%url 'pending'%}">Pending Task</a>
+        </div>
+
+
+    </div>
+
+{%endblock%}
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block containt%}
+
+        <br><br>
+        <div class="display-6 fw-bold">Add Task </div>
+        <hr>
+        <br>
+        <form action="{%url 'add' %}" method="post">
+            {% csrf_token %}
+            <div class="row ">
+                <div class="col-lg-2">
+                    <label class="form-label fw-bold" for="task">Write A Task Here :</label>
+                </div>
+                <div class="col-lg-8">
+                    <textarea class="form-control" required id="task" name="task" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-lg-2">
+                </div>
+                <button class="btn btn-outline-success mx-2 col-lg-2" type="submit">Add Task</button>
+            </div>
+        </form>
+    </div>
+{%endblock%}
+</body>
+
+</html>
